@@ -9,3 +9,4 @@ C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.Entities\obj\Debug\net9.0\FikirHa
 C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.Entities\obj\Debug\net9.0\refint\FikirHavuzu.Entities.dll
 C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.Entities\obj\Debug\net9.0\FikirHavuzu.Entities.pdb
 C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.Entities\obj\Debug\net9.0\ref\FikirHavuzu.Entities.dll
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.Entities\obj\Debug\net9.0\FikirHavuzu.Entities.sourcelink.json

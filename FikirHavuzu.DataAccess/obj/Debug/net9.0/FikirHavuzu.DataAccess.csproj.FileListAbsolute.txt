@@ -15,3 +15,4 @@ C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.DataAccess\obj\Debug\net9.0\refin
 C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.DataAccess\obj\Debug\net9.0\FikirHavuzu.DataAccess.pdb
 C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.DataAccess\obj\Debug\net9.0\FikirHavuzu.DataAccess.genruntimeconfig.cache
 C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.DataAccess\obj\Debug\net9.0\ref\FikirHavuzu.DataAccess.dll
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.DataAccess\obj\Debug\net9.0\FikirHavuzu.DataAccess.sourcelink.json

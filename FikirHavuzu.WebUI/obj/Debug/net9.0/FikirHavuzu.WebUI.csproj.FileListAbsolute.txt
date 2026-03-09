@@ -149,7 +149,6 @@ C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.WebUI\obj\Debug\net9.0\rjsmcshtml
 C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.WebUI\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.WebUI\obj\Debug\net9.0\scopedcss\bundle\FikirHavuzu.WebUI.styles.css
 C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.WebUI\obj\Debug\net9.0\scopedcss\projectbundle\FikirHavuzu.WebUI.bundle.scp.css
-C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.WebUI\obj\Debug\net9.0\compressed\4vrmc6q4di-bx4lm7pybj.gz
 C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.WebUI\obj\Debug\net9.0\compressed\tehiyrpjv5-61n19gt1b8.gz
 C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.WebUI\obj\Debug\net9.0\compressed\hjiiwc8ctx-xtxxf3hu2r.gz
 C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.WebUI\obj\Debug\net9.0\compressed\9vsx8qt0eh-bqjiyaj88i.gz
@@ -232,3 +231,5 @@ C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.WebUI\bin\Debug\net9.0\RBush.dll
 C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.WebUI\bin\Debug\net9.0\SixLabors.Fonts.dll
 C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.WebUI\bin\Debug\net9.0\System.IO.Packaging.dll
 C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.WebUI\obj\Debug\net9.0\compressed\con4koj7h0-azwqrkvas8.gz
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.WebUI\obj\Debug\net9.0\FikirHavuzu.WebUI.sourcelink.json
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.WebUI\obj\Debug\net9.0\compressed\4vrmc6q4di-lstjmhgsin.gz

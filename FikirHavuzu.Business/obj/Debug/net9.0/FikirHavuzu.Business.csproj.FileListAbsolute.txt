@@ -15,3 +15,4 @@ C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.Business\obj\Debug\net9.0\FikirHa
 C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.Business\obj\Debug\net9.0\refint\FikirHavuzu.Business.dll
 C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.Business\obj\Debug\net9.0\FikirHavuzu.Business.pdb
 C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.Business\obj\Debug\net9.0\ref\FikirHavuzu.Business.dll
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.Business\obj\Debug\net9.0\FikirHavuzu.Business.sourcelink.json

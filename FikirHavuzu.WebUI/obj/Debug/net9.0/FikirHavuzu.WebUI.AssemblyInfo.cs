@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FikirHavuzu.WebUI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b2f218c38e63ed7804e0d1dfc332b1a67c914335")]
 [assembly: System.Reflection.AssemblyProductAttribute("FikirHavuzu.WebUI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FikirHavuzu.WebUI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
