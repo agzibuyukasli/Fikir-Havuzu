@@ -1,0 +1,61 @@
+@model FikirHavuzu.Entities.IdeaEvaluation
+
+@{
+    ViewData["Title"] = "Fikir Değerlendir";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm border-0">
+        <div class="card-header text-dark">
+            <h4 class="mb-0"><i class="bi bi-star"></i> Fikir Değerlendiriliyor...</h4>
+        </div>
+        <div class="card-body p-4">
+
+            <div class="alert alert-info border-0 shadow-sm mb-4">
+                <h5 class="fw-bold text-dark">@Model.Idea?.Title</h5>
+                <hr />
+                <p class="mb-1"><strong>Konu:</strong> @Model.Idea?.Subject</p>
+                <p class="mb-0 text-muted">@Model.Idea?.Description</p>
+                <p class="mt-2 mb-0 small"><strong>Ekleyen:</strong> @Model.Idea?.User?.FirstName
+                    @Model.Idea?.User?.LastName</p>
+                </div>
+
+                <form asp-action="Evaluate" method="post">
+                    <input type="hidden" asp-for="IdeaId" />
+                    @if (Model.Id > 0)
+                    {
+                        <input type="hidden" asp-for="Id" />
+                    }
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Puan Ver (0 - 100)</label>
+                            <input type="number" asp-for="Score" class="form-control" min="0" max="100" required />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Karar Durumu</label>
+                            <select asp-for="Status" class="form-select" required>
+                                <option value="">Seçiniz...</option>
+                                <option value="Onaylandı">Onaylandı</option>
+                                <option value="Reddedildi">Reddedildi</option>
+                                <option value="Geliştirilmeli">Geliştirilmeli</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Değerlendirme Notu</label>
+                        <textarea asp-for="Description" class="form-control" rows="4"
+                                  placeholder="Fikir hakkındaki görüşlerinizi yazın..."></textarea>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-success px-4">
+                            <i class="bi bi-check-lg"></i> Değerlendirmeyi Kaydet
+                        </button>
+                        <a asp-action="Index" class="btn btn-outline-secondary">İptal</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

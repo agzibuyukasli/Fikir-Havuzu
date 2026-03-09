@@ -1,0 +1,49 @@
+@{
+    ViewData["Title"] = "Yardım Merkezi";
+}
+
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-800 text-primary">Yardım Merkezi</h1>
+        <p class="text-muted fs-5">Fikir Havuzu platformunu kullanırken ihtiyacınız olan tüm bilgiler burada.</p>
+        <div class="mx-auto mt-3 underline-premium"></div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="accordion accordion-flush shadow-sm rounded-4 overflow-hidden" id="helpAccordion">
+                <div class="accordion-item border-0 mb-2 rounded-3 shadow-sm">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button fw-bold py-3" type="button" data-bs-toggle="collapse" data-bs-target="#q1">
+                            <i class="bi bi-question-circle text-primary me-2"></i> Nasıl yeni fikir eklerim?
+                        </button>
+                    </h2>
+                    <div id="q1" class="accordion-collapse collapse show" data-bs-parent="#helpAccordion">
+                        <div class="accordion-body text-muted">
+                            Üst menüdeki "Fikirler" sayfasına giderek sağ üst köşede bulunan <strong>"Yeni Fikir Ekle"</strong> butonuna basmanız yeterlidir. Fikrinize bir başlık ve detaylı açıklama ekleyerek havuzu zenginleştirebilirsiniz.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item border-0 mb-2 rounded-3 shadow-sm">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold py-3" type="button" data-bs-toggle="collapse" data-bs-target="#q2">
+                            <i class="bi bi-gem text-warning me-2"></i> Puan sistemi nasıl çalışır?
+                        </button>
+                    </h2>
+                    <div id="q2" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                        <div class="accordion-body text-muted">
+                            Paylaştığınız her fikir karşılığında puan kazanırsınız. Ayrıca diğer kullanıcıların fikrinize verdiği puanlar da toplam puanınızı artırır. Kazandığınız puanları <strong>Market</strong> sekmesinden harcayabilirsiniz!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .underline-premium { width: 80px; height: 5px; background: linear-gradient(90deg, #0984e3, #00cec9); border-radius: 50px; }
+    .accordion-button:not(.collapsed) { background-color: rgba(9, 132, 227, 0.05); color: #0984e3; }
+    .fw-800 { font-weight: 800; }
+</style>

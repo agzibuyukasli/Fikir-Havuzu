@@ -1,0 +1,17 @@
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.DataAccess\bin\Debug\net9.0\FikirHavuzu.DataAccess.deps.json
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.DataAccess\bin\Debug\net9.0\FikirHavuzu.DataAccess.runtimeconfig.json
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.DataAccess\bin\Debug\net9.0\FikirHavuzu.DataAccess.dll
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.DataAccess\bin\Debug\net9.0\FikirHavuzu.DataAccess.pdb
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.DataAccess\bin\Debug\net9.0\FikirHavuzu.Entities.dll
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.DataAccess\bin\Debug\net9.0\FikirHavuzu.Entities.pdb
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.DataAccess\obj\Debug\net9.0\FikirHavuzu.DataAccess.csproj.AssemblyReference.cache
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.DataAccess\obj\Debug\net9.0\FikirHavuzu.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.DataAccess\obj\Debug\net9.0\FikirHavuzu.DataAccess.AssemblyInfoInputs.cache
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.DataAccess\obj\Debug\net9.0\FikirHavuzu.DataAccess.AssemblyInfo.cs
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.DataAccess\obj\Debug\net9.0\FikirHavuzu.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.DataAccess\obj\Debug\net9.0\FikirHav.DFA08DB2.Up2Date
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.DataAccess\obj\Debug\net9.0\FikirHavuzu.DataAccess.dll
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.DataAccess\obj\Debug\net9.0\refint\FikirHavuzu.DataAccess.dll
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.DataAccess\obj\Debug\net9.0\FikirHavuzu.DataAccess.pdb
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.DataAccess\obj\Debug\net9.0\FikirHavuzu.DataAccess.genruntimeconfig.cache
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.DataAccess\obj\Debug\net9.0\ref\FikirHavuzu.DataAccess.dll

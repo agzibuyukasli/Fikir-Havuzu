@@ -1,0 +1,102 @@
+@model FikirHavuzu.Entities.Idea
+
+<div class="container-fluid px-md-5 py-5">
+    <div class="row mb-5 mx-0 align-items-center">
+        <div class="col-md-8">
+            <h1 class="display-4 fw-800 text-dark mb-2"><i class="bi bi-lightbulb-fill text-warning me-2"></i>Yeni Bir Fikir Tohumu Ekin</h1>
+            <p class="fs-5 text-muted">Platforma yeni bir değer katmak için aşağıdaki detayları doldurun.</p>
+        </div>
+        <div class="col-md-4 text-md-end">
+            <a asp-action="Index" class="btn btn-outline-secondary rounded-pill px-4 fw-bold shadow-sm">
+                <i class="bi bi-arrow-left me-1"></i> Fikir Listesine Dön
+            </a>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mx-0">
+        <div class="col-xl-10">
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="row g-0">
+                    <div class="col-lg-4 d-none d-lg-flex flex-column justify-content-center align-items-center p-5 text-white text-center" style="background: linear-gradient(135deg, #0984e3 0%, #00cec9 100%);">
+                        <i class="bi bi-rocket-takeoff display-1 mb-4"></i>
+                        <h2 class="fw-bold">Fikriniz Değerli!</h2>
+                        <p class="opacity-75">Burada paylaşacağınız her fikir, projemizin geleceğini şekillendirebilir. Detayları net bir şekilde ifade etmeye özen gösterin.</p>
+                        <div class="mt-4 p-3 bg-white bg-opacity-10 rounded-4 border border-white border-opacity-25 w-100">
+                            <small class="fw-bold d-block mb-1 text-uppercase">İpucu</small>
+                            <small>Faydalar kısmında çözümün sağlayacağı verimliliği vurgulayın.</small>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="card-body p-4 p-md-5 bg-white">
+                            <form asp-action="Create" method="post" enctype="multipart/form-data">
+                                <div class="row g-4">                          
+                                    <div class="col-md-6">
+                                        <label asp-for="Title" class="form-label fw-bold text-muted small text-uppercase">Fikir Başlığı</label>
+                                        <input asp-for="Title" class="form-control bg-light border-0 py-2" placeholder="Kısa ve öz bir başlık..." required />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label asp-for="Subject" class="form-label fw-bold text-muted small text-uppercase">Konu (Ürün/Hizmet)</label>
+                                        <input asp-for="Subject" class="form-control bg-light border-0 py-2" placeholder="Hangi alanla ilgili?" required />
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label asp-for="Benefit" class="form-label fw-bold text-muted small text-uppercase">Amaçlanan Fayda</label>
+                                        <textarea asp-for="Benefit" class="form-control bg-light border-0" rows="2" placeholder="Bu fikir neyi iyileştirecek?"></textarea>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label asp-for="Description" class="form-label fw-bold text-muted small text-uppercase">Fikir Detayları</label>
+                                        <textarea asp-for="Description" class="form-control bg-light border-0" rows="5" placeholder="Fikrinizi buraya detaylıca yazın..." required></textarea>
+                                        <span asp-validation-for="Description" class="text-danger small"></span>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold text-muted small text-uppercase">Doküman Ekle</label>
+                                        <input type="file" name="document" class="form-control bg-light border-0" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold text-muted small text-uppercase">Öncelik Seviyesi</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light border-0"><i class="bi bi-flag-fill text-danger"></i></span>
+                                            <select name="Priority" class="form-select bg-light border-0 shadow-none">
+                                                <option value="Düşük">Düşük</option>
+                                                <option value="Orta" selected>Orta</option>
+                                                <option value="Yüksek">Yüksek (Acil)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 pt-3">
+                                        <button type="submit" class="btn btn-primary btn-lg rounded-pill w-100 fw-bold shadow-lg py-3">
+                                            <i class="bi bi-send-fill me-2"></i> Fikri Sisteme Gönder
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    body { background-color: #f8fafd; }
+    .fw-800 { font-weight: 800; }
+    .form-control:focus, .form-select:focus {
+        background-color: #fff !important;
+        box-shadow: 0 5px 15px rgba(9, 132, 227, 0.1) !important;
+        border-color: #00cec9 !important;
+    }
+    .btn-primary {
+        background: linear-gradient(135deg, #0984e3 0%, #00cec9 100%);
+        border: none;
+        transition: transform 0.3s ease;
+    }
+    .btn-primary:hover {
+        transform: scale(1.02);
+        background: linear-gradient(135deg, #00cec9 0%, #0984e3 100%);
+    }
+</style>

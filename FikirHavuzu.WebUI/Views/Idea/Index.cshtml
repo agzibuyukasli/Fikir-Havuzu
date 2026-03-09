@@ -1,0 +1,315 @@
+@using System.Linq
+@using FikirHavuzu.Entities
+@model List<FikirHavuzu.Entities.Idea>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div id="puanBildirimi" class="puan-toast shadow-lg d-flex align-items-center animate__animated animate__fadeInRight">
+        <div class="puan-icon">
+            <i class="bi bi-stars"></i>
+        </div>
+        <div class="puan-text">
+            <span class="d-block fw-bold text-uppercase" style="font-size: 0.7rem; opacity: 0.8;">Tebrikler!</span>
+            <span class="fw-bold">@TempData["SuccessMessage"]</span>
+        </div>
+    </div>
+}
+
+<div class="container-fluid px-md-5 mt-4 mb-5">
+    <div class="row mb-5 mx-0">
+        <div class="col-12 bg-white p-4 rounded-4 shadow-sm d-flex justify-content-between align-items-center">
+            <div>
+                <h1 class="display-4 fw-bold text-primary mb-0">
+                    <i class="bi bi-lightbulb-fill text-warning me-2"></i>Fikir Havuzu
+                </h1>
+                <p class="fs-4 text-muted mb-0">Platformdaki tüm fikirleri buradan yönetebilirsin.</p>
+            </div>
+            <div class="d-flex gap-3">
+                <a asp-action="ExportToExcel" class="btn btn-outline-success btn-lg px-4 rounded-pill fw-bold">
+                    <i class="bi bi-file-earmark-excel me-2"></i> Excel İndir
+                </a>
+                <a asp-action="Create" class="btn btn-success btn-lg px-4 rounded-pill shadow-sm fw-bold">
+                    <i class="bi bi-plus-lg me-2"></i> Yeni Fikir Ekle
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-5 mx-0">
+        <div class="col-12">
+            <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
+                <div class="card-header bg-light py-3 border-0">
+                    <h5 class="mb-0 fw-bold text-secondary"><i class="bi bi-filter-left me-2"></i> Akıllı Filtreleme</h5>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Index" method="get" class="row g-4">
+                        <div class="col-md-3">
+                            <label class="small fw-bold text-muted mb-2">Başlık</label>
+                            <input type="text" name="searchTitle" class="form-control form-control-lg bg-light border-0 shadow-none" placeholder="Arama..." value="@ViewContext.HttpContext.Request.Query["searchTitle"]">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="small fw-bold text-muted mb-2">Konu</label>
+                            <input type="text" name="searchSubject" class="form-control form-control-lg bg-light border-0 shadow-none" placeholder="Konu..." value="@ViewContext.HttpContext.Request.Query["searchSubject"]">
+                        </div>
+                        <div class="col-md-2">
+                            <label class="small fw-bold text-muted mb-2">Personel</label>
+                            <input type="text" name="searchUser" class="form-control form-control-lg bg-light border-0 shadow-none" value="@ViewContext.HttpContext.Request.Query["searchUser"]" placeholder="İsim..." />
+                        </div>
+                        <div class="col-md-2">
+                            <label class="small fw-bold text-muted mb-2">Tarih</label>
+                            <input type="date" name="searchDate" class="form-control form-control-lg bg-light border-0 shadow-none" value="@ViewContext.HttpContext.Request.Query["searchDate"]">
+                        </div>
+                        <div class="col-md-2 d-flex align-items-end gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg w-100 fw-bold shadow-sm">Uygula</button>
+                            <a asp-action="Index" class="btn btn-secondary btn-lg shadow-sm"><i class="bi bi-arrow-counterclockwise"></i></a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-5 mx-0">
+
+        <div class="col-xl-8 col-lg-7">
+            <div class="idea-list" style="min-height: 80vh;">
+                @if (Model == null || !Model.Any())
+                {
+                    <div class="alert alert-light border-0 rounded-4 p-5 text-center shadow-sm">
+                        <i class="bi bi-cloud-slash display-1 opacity-25"></i>
+                        <h3 class="fw-bold mt-3 text-dark">Henüz Fikir Yok</h3>
+                        <p class="text-muted fs-5">Tüm fikirler temizlendi veya kriterlere uygun sonuç bulunamadı.</p>
+                        <a asp-action="Create" class="btn btn-primary btn-lg rounded-pill px-5 mt-2 shadow-sm">
+                            <i class="bi bi-plus-lg me-2"></i> İlk Fikri Sen Ekle
+                        </a>
+                    </div>
+                }
+                else
+                {
+                    @foreach (var item in Model)
+                    {
+                        var myEval = (item.Evaluations as IEnumerable<FikirHavuzu.Entities.IdeaEvaluation>)?.FirstOrDefault(e => e.EvaluatorUserId == (int?)ViewBag.CurrentUserId);
+                        
+                        <div class="card mb-4 shadow-sm border-0 idea-card rounded-4 border-start border-5 @(myEval?.Status == "Onaylandı" ? "border-success" : "border-primary")">
+                            <div class="card-body p-4">
+                                <div class="row align-items-start">
+                                    <div class="col">
+                                        <h2 class="card-title text-primary fw-bold mb-3">@item.Title</h2>
+                                        <p class="card-text fs-4 text-muted lh-sm" style="word-wrap: break-word;">@item.Description</p>
+                                    </div>
+                                    <div class="col-auto text-end" style="min-width: 160px;">
+                                        <div class="badge bg-light text-muted p-2 mb-2 fs-6 border w-100">
+                                            <i class="bi bi-calendar3 me-1"></i> @item.CreatedDate.ToShortDateString()
+                                        </div>
+                                        <div class="badge rounded-pill @(item.Priority == "Yüksek" ? "bg-danger" : (item.Priority == "Orta" ? "bg-warning text-dark" : "bg-info text-dark")) p-2 fs-6 w-100 shadow-sm">
+                                            @item.Priority Öncelik
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="my-4 opacity-25">
+
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="d-flex gap-3">
+                                        <span class="badge bg-info-subtle text-info p-3 fs-5 rounded-3 border border-info">
+                                            <i class="bi bi-person-circle text-primary me-2"></i> @(item.User?.FirstName ?? "Sistem")
+                                        </span>
+                                        @if (myEval != null)
+                                        {
+                                            <span class="badge @(myEval.Status == "Onaylandı" ? "bg-success" : "bg-danger") p-3 fs-5 shadow-sm rounded-3">
+                                                <i class="bi bi-check2-circle me-1"></i> Kararım: @myEval.Status (@myEval.Score)
+                                            </span>
+                                        }
+                                    </div>
+
+                                    <div class="text-end d-flex gap-2">
+                                        @if (User.IsInRole("Admin") || User.Identity.Name == "admin@fikirhavuzu.com")
+                                        {
+                                            <button onclick="confirmDeleteIdea(@item.Id)" class="btn btn-lg btn-outline-danger px-4 rounded-pill fw-bold shadow-sm">
+                                                <i class="bi bi-trash3-fill"></i>
+                                            </button>
+                                        }
+
+                                        @if (item.UserId == (int)ViewBag.CurrentUserId)
+                                        {
+                                            <button class="btn btn-lg btn-secondary px-4 rounded-pill fw-bold" disabled>Kendi Fikrin</button>
+                                        }
+                                        else
+                                        {
+                                            <a asp-action="Evaluate" asp-route-id="@item.Id" 
+                                               class="btn btn-lg px-5 shadow-sm rounded-pill fw-bold @(myEval != null ? "btn-outline-primary border-2" : "btn-primary")">
+                                                <i class="bi @(myEval != null ? "bi-pencil-square" : "bi-stars") me-1"></i>
+                                                @(myEval != null ? "Kararı Değiştir" : "Değerlendir")
+                                            </a>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+
+        <div class="col-xl-4 col-lg-5">
+            <div class="sticky-sidebar">
+
+                <div class="card shadow border-0 mb-4 rounded-4 overflow-hidden">
+                    <div class="card-header bg-primary text-white py-4 px-4 border-0">
+                        <h4 class="mb-0 fw-bold"><i class="bi bi-trophy text-warning me-3"></i> En Aktif 5 Fikirci</h4>
+                    </div>        
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            @{
+                                int rankCounter = 1;
+                                var leaderboard = ViewBag.Leaderboard as IEnumerable<FikirHavuzu.Entities.User>;
+                            }
+
+                            @if (leaderboard != null && leaderboard.Any())
+                            {
+                                foreach (var user in leaderboard)
+                                {
+                                    string rankClass = user.Rank switch {
+                                        "Üstad" => "bg-danger text-white",
+                                        "Kıdemli" => "bg-primary text-white",
+                                        "Geliştirici" => "bg-success text-white",
+                                        "Kaşif" => "bg-warning text-dark",
+                                        _ => "bg-light text-dark border"
+                                    };
+
+                                    <li class="list-group-item d-flex align-items-center justify-content-between py-4 px-4 border-bottom bg-white shadow-sm-hover">
+                                        <div class="d-flex align-items-center">
+                                            <div class="me-3 fs-3 fw-bold text-muted" style="min-width: 40px;">#@rankCounter</div>
+                                            <div>
+                                                <div class="fw-bold text-primary fs-4">@user.FirstName @user.LastName</div>
+                                                <small class="badge @rankClass fs-6 rounded-pill">@(user.Rank ?? "Yeni Üye")</small>
+                                            </div>
+                                        </div>
+                                        <span class="badge bg-warning text-dark rounded-pill shadow-sm p-3 fs-5 fw-bold">@user.TotalScore Puan</span>
+                                    </li>
+                                    rankCounter++;
+                                }
+                            }
+                            else
+                            {
+                                <li class="list-group-item text-center py-5 text-muted">
+                                    <i class="bi bi-person-exclamation display-4 d-block mb-2"></i>
+                                    Henüz sıralama verisi yüklenemedi.
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div class="card shadow border-0 bg-primary text-white text-center rounded-4 shadow-lg">
+                    <div class="card-body py-5 px-4">
+                        <i class="bi bi-gift-fill display-1 mb-4 text-white"></i>
+                        <h2 class="fw-bold mb-3">Puanlarını Harca!</h2>
+                        <p class="fs-5 mb-4 opacity-75">Marketten harika ödüller alabilirsin.</p>
+                        <a asp-controller="Market" asp-action="Index" class="btn btn-light btn-lg fw-bold px-5 py-3 rounded-pill text-primary fs-4">
+                            Markete Git <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    body { background-color: #f0f2f5 !important; }
+    
+    .idea-card { transition: all 0.3s ease; }
+    .idea-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important; }
+
+    .puan-toast {
+        position: fixed;
+        top: 100px;
+        right: 30px;
+        z-index: 9999;
+        background: linear-gradient(135deg, #0984e3 0%, #00cec9 100%);
+        color: white;
+        padding: 12px 25px;
+        border-radius: 50px;
+        min-width: 300px;
+        max-width: 400px;
+        transition: all 1s ease;
+    }
+
+    .puan-icon { font-size: 1.8rem; margin-right: 15px; }
+    
+    .fade-out { opacity: 0 !important; transform: translateX(50px); }
+
+    .sticky-sidebar {
+        position: sticky;
+        top: 100px;
+    }
+
+
+    .sidebar-wrapper {
+        position: relative;
+    }
+    @@media (max-width: 991px) {
+        .sticky-sidebar {
+            position: static;
+            max-height: none;
+            overflow: visible;
+        }
+    }
+
+    .row.align-items-start {
+        display: flex;
+        align-items: flex-start !important;
+    }
+</style>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    $(document).ready(function() {
+        var notification = $('#puanBildirimi');
+        if (notification.length > 0) {
+            setTimeout(function() {
+                notification.addClass('fade-out');
+                setTimeout(function() {
+                    notification.remove();
+                }, 1000);
+            }, 3000);
+        }
+    });
+
+    function confirmDeleteIdea(ideaId) {
+        Swal.fire({
+            title: 'Emin misin?',
+            text: "Bu fikir veritabanından kalıcı olarak silinecek!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Evet, SİL!',
+            cancelButtonText: 'Vazgeç',
+            customClass: {
+                confirmButton: 'btn btn-danger btn-lg rounded-pill px-4',
+                cancelButton: 'btn btn-secondary btn-lg rounded-pill px-4'
+            },
+            buttonsStyling: false
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.post('/Idea/DeleteIdea/' + ideaId, function () {
+                    Swal.fire({
+                        title: 'Silindi!',
+                        text: 'Fikir başarıyla silindi.',
+                        icon: 'success',
+                        confirmButtonText: 'Tamam',
+                        customClass: { confirmButton: 'btn btn-success rounded-pill px-4' },
+                        buttonsStyling: false
+                    }).then(() => {
+                        location.reload();
+                    });
+                }).fail(function () {
+                    Swal.fire('Hata!', 'Silme işlemi yapılamadı.', 'error');
+                });
+            }
+        });
+    }
+</script>

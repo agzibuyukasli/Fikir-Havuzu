@@ -1,0 +1,168 @@
+@model List<FikirHavuzu.Entities.Product>
+
+<style>
+    .puan-toast {
+        position: fixed;
+        top: 100px;
+        right: 30px;
+        z-index: 9999;
+        background: linear-gradient(135deg, #0984e3 0%, #00cec9 100%);
+        color: white;
+        padding: 12px 25px;
+        border-radius: 50px;
+        min-width: 320px;
+        box-shadow: 0 10px 30px rgba(9, 132, 227, 0.3);
+        transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        display: flex;
+        align-items: center;
+    }
+
+    .puan-icon {
+        font-size: 1.5rem;
+        margin-right: 15px;
+        background: rgba(255,255,255,0.2);
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
+
+    .fade-out {
+        opacity: 0 !important;
+        transform: translateX(100px);
+    }
+</style>
+
+<div class="container-fluid py-5 px-md-5">
+    @if (TempData["Message"] != null)
+{
+    <div id="systemToast" class="puan-toast animate__animated animate__fadeInRight">
+        <div class="puan-icon">
+            <i class="bi bi-info-circle-fill"></i>
+        </div>
+        <div class="puan-text">
+            <span class="d-block fw-bold text-uppercase" style="font-size: 0.65rem; opacity: 0.8; letter-spacing: 1px;">Sistem Mesajı</span>
+            <span class="fw-bold">@TempData["Message"]</span>
+        </div>
+    </div>
+}
+
+    <div class="row align-items-center mb-5 g-4 bg-white p-4 rounded-4 shadow-sm mx-0">
+        <div class="col-lg-8">
+            <h1 class="display-3 fw-800 text-primary mb-2"><i class="bi bi-shop"></i> Fikir Market</h1>
+            <p class="fs-4 text-muted mb-0 fw-600">Kazandığın puanlarla ödüllerini seç!</p>
+        </div>
+        <div class="col-lg-4 text-lg-end">
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-action="Create" class="btn btn-success btn-lg px-5 py-3 rounded-pill shadow-sm fw-bold">
+                    <i class="bi bi-plus-circle-fill me-2"></i> YENİ ÜRÜN EKLE
+                </a>
+            }
+        </div>
+    </div>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="row justify-content-center mx-0">
+            <div class="col-md-8 text-center py-5 bg-white rounded-5 border border-3 border-dashed">
+                <i class="bi bi-cart-x display-1 text-muted opacity-25"></i>
+                <h2 class="mt-4 fw-bold">Market Henüz Boş</h2>
+                <p class="fs-5 text-muted">Ürünler eklendiğinde burada görünecek.</p>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row g-4 mx-0">
+            @foreach (var p in Model)
+            {
+                <div class="col-xl-4 col-xxl-3 col-md-6">
+                    <div class="card h-100 shadow-lg border-0 rounded-4 overflow-hidden transition-hover bg-white">
+                        <div class="card-header bg-primary py-1 border-0"></div>
+                        <div class="card-body p-4 text-center d-flex flex-column h-100">
+
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <span class="badge @(p.Stock > 0 ? "bg-light text-success" : "bg-light text-danger") border px-3 py-2 rounded-pill">
+                                    <i class="bi bi-box-seam me-1"></i> Stok: @p.Stock
+                                </span>
+                            </div>
+
+                            <div class="mb-4">
+                                <div class="bg-primary bg-opacity-10 p-4 rounded-circle d-inline-block">
+                                    <i class="bi bi-gift-fill display-3 text-primary"></i>
+                                </div>
+                            </div>
+
+                            <h3 class="fw-bold mb-2">@p.Name</h3>
+                            <p class="text-muted small flex-grow-1">@p.Description</p>
+
+                            <div class="my-3">
+                                <span class="display-6 fw-bold text-success">@p.Price</span>
+                                <span class="fs-5 text-muted fw-bold"> Puan</span>
+                            </div>
+
+                            <div class="mt-auto">
+                                <form asp-action="Buy" method="post" class="mb-2">
+                                    <input type="hidden" name="productId" value="@p.Id" />
+                                    @if (ViewBag.UserScore >= p.Price && p.Stock > 0)
+                                    {
+                                        <button type="submit" class="btn btn-primary btn-lg w-100 rounded-pill py-2 fw-bold shadow-sm">
+                                            SATIN AL
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button type="button" class="btn btn-secondary btn-lg w-100 rounded-pill disabled py-2 opacity-50 border-0">
+                                            @(p.Stock <= 0 ? "TÜKENDİ" : "PUAN YETERSİZ")
+                                        </button>
+                                    }
+                                </form>
+
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <div class="d-flex gap-2 border-top pt-3 mt-2">
+                                        <a asp-action="Edit" asp-route-id="@p.Id" class="btn btn-sm btn-outline-primary w-100 rounded-pill">
+                                            <i class="bi bi-pencil me-1"></i> Düzenle
+                                        </a>
+                                        <a asp-action="Delete" asp-route-id="@p.Id" 
+                                           class="btn btn-sm btn-outline-danger w-100 rounded-pill"
+                                           onclick="return confirm('@p.Name ürününü silmek istediğine emin misin?')">
+                                            <i class="bi bi-trash me-1"></i> Sil
+                                        </a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+<style>
+    body { background-color: #f8fafd; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .fw-800 { font-weight: 800; }
+    .fw-600 { font-weight: 600; }
+    .transition-hover { transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1); }
+    .transition-hover:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1) !important; }
+    .card { border: 1px solid rgba(0,0,0,0.05) !important; }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var toast = document.getElementById('systemToast');
+        if (toast) {
+            setTimeout(function () {
+                toast.classList.add('fade-out');
+
+                setTimeout(function () {
+                    toast.remove();
+                }, 800); 
+            }, 2000);
+        }
+    });
+</script>

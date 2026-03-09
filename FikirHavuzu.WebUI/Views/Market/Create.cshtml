@@ -1,0 +1,109 @@
+@model FikirHavuzu.Entities.Product
+
+<div class="container-fluid px-md-5 py-5">
+    <div class="row mb-5 mx-0 align-items-center">
+        <div class="col-md-8">
+            <h1 class="display-4 fw-800 text-dark mb-2"><i class="bi bi-cart-plus-fill text-primary me-2"></i>Yeni Ürün Tanımla</h1>
+            <p class="fs-5 text-muted fw-600">Market envanterine yeni bir ödül ekleyerek motivasyonu artırın.</p>
+        </div>
+        <div class="col-md-4 text-md-end">
+            <a asp-action="Index" class="btn btn-outline-secondary rounded-pill px-4 fw-bold shadow-sm">
+                <i class="bi bi-arrow-left me-1"></i> Markete Dön
+            </a>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mx-0">
+        <div class="col-xl-10">
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="row g-0">
+                    <div class="col-lg-4 d-none d-lg-flex flex-column justify-content-center align-items-center p-5 text-white text-center" 
+                         style="background: linear-gradient(135deg, #0984e3 0%, #00cec9 100%);">
+                        <i class="bi bi-bag-check-fill display-1 mb-4"></i>
+                        <h2 class="fw-bold">Ödülleri Yönet</h2>
+                        <p class="opacity-75">Personelin topladığı puanlarla alabileceği değerli ödülleri buradan sisteme dahil edebilirsiniz.</p>
+                        
+                        <div class="mt-4 p-3 bg-white bg-opacity-10 rounded-4 border border-white border-opacity-25 w-100">
+                            <small class="fw-bold d-block mb-1 text-uppercase text-white">Yönetici İpucu</small>
+                            <small>Ürün fiyatlarını (puan) belirlerken personelin ortalama kazancını göz önünde bulundurun.</small>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="card-body p-4 p-md-5 bg-white">
+                            <form asp-action="Create" method="post">
+                                <div class="row g-4">
+                                    <div class="col-md-12">
+                                        <label asp-for="Name" class="form-label fw-bold text-muted small text-uppercase">Ürün / Ödül İsmi</label>
+                                        <input asp-for="Name" class="form-control bg-light border-0 py-3 rounded-3" placeholder="Örn: Hafta Sonu Tatili" required />
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label asp-for="Description" class="form-label fw-bold text-muted small text-uppercase">Ürün Detayı</label>
+                                        <textarea asp-for="Description" class="form-control bg-light border-0 rounded-3" rows="3" placeholder="Bu ödül neleri kapsıyor?" required></textarea>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label asp-for="Price" class="form-label fw-bold text-muted small text-uppercase">Gerekli Puan</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light border-0 px-3"><i class="bi bi-gem text-primary"></i></span>
+                                            <input asp-for="Price" type="number" class="form-control bg-light border-0 py-2 shadow-none" placeholder="0" min="1" required />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label asp-for="Stock" class="form-label fw-bold text-muted small text-uppercase">Stok Sayısı</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light border-0 px-3"><i class="bi bi-archive-fill text-info"></i></span>
+                                            <input asp-for="Stock" type="number" class="form-control bg-light border-0 py-2 shadow-none" placeholder="0" min="0" required />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 pt-4">
+                                        <button type="submit" class="btn btn-primary btn-lg rounded-pill w-100 fw-bold shadow-lg py-3">
+                                            <i class="bi bi-check-circle-fill me-2"></i> ÜRÜNÜ YAYINLA
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    body { background-color: #f8fafd; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .fw-800 { font-weight: 800; }
+    .fw-600 { font-weight: 600; }
+    
+    .form-control:focus {
+        background-color: #fff !important;
+        box-shadow: 0 8px 20px rgba(9, 132, 227, 0.1) !important;
+        border: 2px solid #0984e3 !important;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #0984e3 0%, #00cec9 100%);
+        border: none;
+        transition: all 0.4s ease;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 30px rgba(9, 132, 227, 0.3) !important;
+        background: linear-gradient(135deg, #00cec9 0%, #0984e3 100%);
+    }
+
+    .input-group-text {
+        border-top-left-radius: 1rem !important;
+        border-bottom-left-radius: 1rem !important;
+    }
+    
+    .input-group .form-control {
+        border-top-right-radius: 1rem !important;
+        border-bottom-right-radius: 1rem !important;
+    }
+</style>

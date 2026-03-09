@@ -1,0 +1,17 @@
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.Business\bin\Debug\net9.0\FikirHavuzu.Business.deps.json
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.Business\bin\Debug\net9.0\FikirHavuzu.Business.dll
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.Business\bin\Debug\net9.0\FikirHavuzu.Business.pdb
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.Business\bin\Debug\net9.0\FikirHavuzu.DataAccess.dll
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.Business\bin\Debug\net9.0\FikirHavuzu.Entities.dll
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.Business\bin\Debug\net9.0\FikirHavuzu.DataAccess.pdb
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.Business\bin\Debug\net9.0\FikirHavuzu.Entities.pdb
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.Business\obj\Debug\net9.0\FikirHavuzu.Business.csproj.AssemblyReference.cache
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.Business\obj\Debug\net9.0\FikirHavuzu.Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.Business\obj\Debug\net9.0\FikirHavuzu.Business.AssemblyInfoInputs.cache
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.Business\obj\Debug\net9.0\FikirHavuzu.Business.AssemblyInfo.cs
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.Business\obj\Debug\net9.0\FikirHavuzu.Business.csproj.CoreCompileInputs.cache
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.Business\obj\Debug\net9.0\FikirHav.D5365EBD.Up2Date
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.Business\obj\Debug\net9.0\FikirHavuzu.Business.dll
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.Business\obj\Debug\net9.0\refint\FikirHavuzu.Business.dll
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.Business\obj\Debug\net9.0\FikirHavuzu.Business.pdb
+C:\Users\lenova\FikirHavuzuProjesi\FikirHavuzu.Business\obj\Debug\net9.0\ref\FikirHavuzu.Business.dll

@@ -1,0 +1,147 @@
+@model FikirHavuzu.Entities.User
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden animate__animated animate__fadeIn">
+                
+                <div class="card-header p-4 border-0 d-flex align-items-center justify-content-between" 
+                     style="background: linear-gradient(135deg, #0984e3 0%, #00cec9 100%);">
+                    <div class="d-flex align-items-center">
+                        <div class="bg-white text-primary rounded-circle d-flex align-items-center justify-content-center me-3 shadow-sm"
+                             style="width: 50px; height: 50px;">
+                            <i class="bi bi-person-plus-fill fs-3"></i>
+                        </div>
+                        <div>
+                            <h4 class="mb-0 text-white fw-800">Yeni Personel Kaydı</h4>
+                            <small class="text-white opacity-75">Sisteme yeni bir kullanıcı eklemek için bilgileri doldurun.</small>
+                        </div>
+                    </div>
+                    <a asp-action="Index" class="btn btn-white btn-sm rounded-pill px-3 fw-bold shadow-sm">
+                        <i class="bi bi-arrow-left me-1"></i> Listeye Dön
+                    </a>
+                </div>
+
+                <div class="card-body p-5 bg-white">
+                    <form asp-action="Create" method="post">
+                        
+                        <div class="row g-4">
+                            <div class="col-12">
+                                <h6 class="text-primary fw-bold text-uppercase small mb-3 border-bottom pb-2">
+                                    <i class="bi bi-person-badge me-2"></i>Kişisel Bilgiler
+                                </h6>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-floating mb-1">
+                                    <input asp-for="FirstName" class="form-control border-0 bg-light rounded-3" placeholder="Ad" required />
+                                    <label asp-for="FirstName" class="fw-bold opacity-75">Ad</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-floating mb-1">
+                                    <input asp-for="LastName" class="form-control border-0 bg-light rounded-3" placeholder="Soyad" required />
+                                    <label asp-for="LastName" class="fw-bold opacity-75">Soyad</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-floating mb-1">
+                                    <input asp-for="Email" type="email" class="form-control border-0 bg-light rounded-3" placeholder="E-Posta" required />
+                                    <label asp-for="Email" class="fw-bold opacity-75">E-Posta Adresi</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-floating mb-1">
+                                    <input asp-for="PhoneNumber" class="form-control border-0 bg-light rounded-3" placeholder="Telefon" required />
+                                    <label asp-for="PhoneNumber" class="fw-bold opacity-75">Telefon Numarası</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12 mt-5">
+                                <h6 class="text-primary fw-bold text-uppercase small mb-3 border-bottom pb-2">
+                                    <i class="bi bi-shield-lock me-2"></i>Resmi ve Güvenlik Bilgileri
+                                </h6>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-floating mb-1">
+                                    <input asp-for="RegistrationNumber" class="form-control border-0 bg-light rounded-3" placeholder="Sicil" required />
+                                    <label asp-for="RegistrationNumber" class="fw-bold opacity-75">Sicil Numarası</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-floating mb-1">
+                                    <input asp-for="TCIdentityNumber" class="form-control border-0 bg-light rounded-3" maxlength="11" placeholder="TC" required />
+                                    <label asp-for="TCIdentityNumber" class="fw-bold opacity-75">T.C. Kimlik No</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-floating mb-1">
+                                    <input asp-for="Password" type="password" class="form-control border-0 bg-light rounded-3 shadow-sm border-start border-danger border-4" placeholder="Şifre" required />
+                                    <label asp-for="Password" class="fw-bold text-danger">Giriş Şifresi Belirle</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 d-flex align-items-center px-4">
+                                <div class="form-check form-switch custom-switch-lg">
+                                    <input class="form-check-input" type="checkbox" asp-for="IsActive" checked>
+                                    <label class="form-check-label ms-2 fw-bold text-dark" for="IsActive">Kullanıcı Hesabı Aktif</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 pt-4 border-top d-flex gap-3">
+                            <button type="submit" class="btn btn-primary btn-lg rounded-pill px-5 fw-800 shadow-sm transition-all hover-up">
+                                <i class="bi bi-check-circle-fill me-2"></i>Kaydı Tamamla
+                            </button>
+                            <button type="reset" class="btn btn-outline-secondary btn-lg rounded-pill px-4 fw-bold">
+                                Temizle
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .fw-800 { font-weight: 800; }
+    .bg-light { background-color: #f8f9fa !important; }
+    
+    .form-floating > .form-control:focus {
+        background-color: #fff !important;
+        box-shadow: 0 0 0 0.25rem rgba(9, 132, 227, 0.1);
+        border: 1px solid #0984e3 !important;
+    }
+
+    .custom-switch-lg .form-check-input {
+        width: 3rem;
+        height: 1.5rem;
+        cursor: pointer;
+    }
+
+    .btn-white {
+        background: white;
+        color: #0984e3;
+        border: none;
+    }
+    .btn-white:hover {
+        background: #f8f9fa;
+        color: #00cec9;
+    }
+
+    .hover-up:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(9, 132, 227, 0.2) !important;
+    }
+
+    [data-bs-theme="dark"] .bg-white { background-color: #212529 !important; }
+    [data-bs-theme="dark"] .bg-light { background-color: #2b3035 !important; }
+    [data-bs-theme="dark"] .text-dark { color: #f8f9fa !important; }
+</style>
